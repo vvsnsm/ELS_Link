@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{% static 'images/logo-16x16.png'%}" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Elsevier Network</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@1.9.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Styles -->
+    <link href="{% static 'css/bootstrap/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'css/components.css'%}" rel="stylesheet">
+    <link href="{% static 'css/settings.css'%}" rel="stylesheet">
+    <link href="{% static 'css/forms.css'%}" rel="stylesheet">
+    <link href="{% static 'css/media.css'%}" rel="stylesheet">
+</head>
+
+<body class="messenger">
+    <div class="container-fluid newsfeed d-flex" id="wrapper">
+        <div class="row newsfeed-size f-width">
+            <div class="col-md-12 message-right-side">
+                {% include 'navsection.html' %}
+                <div class="row message-right-side-content">
+                    <div class="col-md-12">
+                        <div id="message-frame">
+                            <div class="message-sidepanel">
+                                <div class="message-contacts settings-sidebar">
+                                    <ul class="conversations">
+                                        <h6 class="p-3">General Settings</h6>
+                                        <li class="contact setting-active">
+                                            <a href="{% url 'settings' %}" class="wrap d-flex align-items-center">
+                                                <img src="{% static 'images/icons/settings/account.png'%}" class="settings-icon" alt="Settings left sidebar">
+                                                <div class="meta">
+                                                    <p>Your Account</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="contact">
+                                            <a href="{% url 'settings_cont' %}" class="wrap d-flex align-items-center">
+                                                <img src="{% static 'images/icons/settings/contact.png'%}" class="settings-icon" alt="Settings left sidebar">
+                                                <div class="meta">
+                                                    <p>Contact Info</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <h6 class="p-3">Security &#38; Login</h6>
+                                        <li class="contact">
+                                            <a href="{% url 'settings_pass' %}" class="wrap d-flex align-items-center">
+                                                <img src="{% static 'images/icons/settings/account.png'%}" class="settings-icon" alt="Settings left sidebar">
+                                                <div class="meta">
+                                                    <p>Password</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="settings-form p-4">
+                                    <h2>Your Account</h2>
+                                    <form action="" method="" class="mt-4 settings-form">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="settingsFirstName">First Name</label>
+                                                <input type="text" class="form-control" id="settingsFirstName" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="settingsLastName">Last Name</label>
+                                                <input type="text" class="form-control" id="settingsLastName" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-row mb-3 align-items-center">
+                                                <div class="col">
+                                                    <label for="settingsUsername">Username</label>
+                                                    <input type="email" class="form-control" id="settingsUsername" aria-describedby="usernameHelp" value="vvsnsaimohan" placeholder="Username">
+                                                    <small id="usernameHelp" class="form-text text-muted">Your public username is the same as your timeline address.</small>
+                                                </div>
+                                                <div class="col check-username">
+                                                    <span><i class='bx bx-check success'></i> Username is available</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core -->
+    <script src="{% static 'js/jquery/jquery-3.3.1.min.js'%}"></script>
+    <script src="{% static 'js/popper/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js'%}"></script>
+    <!-- Optional -->
+    <script type="text/javascript">
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+    <script src="{% static 'js/components/components.js'%}"></script>
+</body></html>
