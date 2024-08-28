@@ -13,10 +13,10 @@
                         <div class="card newsfeed-user-card h-100">
                             <ul class="list-group list-group-flush newsfeed-left-sidebar">
                                 <li class="list-group-item">
-                                    <h6>Home</h6>
+                                    <h6>Dashboard</h6>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center sd-active">
-                                    <a href="{% url 'index' %}" class="sidebar-item"><img src="{% static 'images/icons/left-sidebar/newsfeed.png' %}" alt="newsfeed"> News Feed</a>
+                                    <a href="{% url 'index' %}" class="sidebar-item"><img src="{% static 'images/icons/left-sidebar/newsfeed.png' %}" alt="newsfeed"> Home</a>
                                     <a href="#" class="newsfeedListicon"><i class='bx bx-dots-horizontal-rounded'></i></a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -30,6 +30,21 @@
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <a href="{% url 'friends' %}" class="sidebar-item"><img src="{% static 'images/icons/left-sidebar/find-friends.png' %}" alt="find-friends"> Find Friends</a>
                                     <span class="badge badge-primary badge-pill"><i class='bx bx-chevron-right'></i></span>
+                                </li><br><br>
+                                <li>
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                          <div class="carousel-item active">
+                                            <img class="d-block w-100" src="{% static 'images/slider/1.jpg'%}" alt="First slide">
+                                          </div>
+                                          <div class="carousel-item">
+                                            <img class="d-block w-100" src="{% static 'images/slider/2.jpg'%}" alt="Second slide">
+                                          </div>
+                                          <div class="carousel-item">
+                                            <img class="d-block w-100" src="{% static 'images/slider/3.jpg'%}" alt="Third slide">
+                                          </div>
+                                        </div>
+                                      </div>
                                 </li>
                             </ul>
                         </div>
@@ -39,15 +54,11 @@
                             <div class="btn-group d-flex">
                                 <a href="{% url 'index' %}" class="btn btn-quick-links mr-3 ql-active custom-color">
                                     <img src="{% static 'images/icons/theme/speech.png' %}" class="mr-2" alt="quick links icon">
-                                    <span class="fs-8">Speech</span>
+                                    <span class="fs-8">Explore</span>
                                 </a>
-                                <a href="{% url 'messages' %}" class="btn btn-quick-links mr-3">
+                                <a href="profile_post.html" class="btn btn-quick-links mr-3">
                                     <img src="{% static 'images/icons/theme/listen.png' %}" class="mr-2" alt="quick links icon">
-                                    <span class="fs-8">Listen</span>
-                                </a>
-                                <a href="#" class="btn btn-quick-links">
-                                    <img src="{% static 'images/icons/theme/watch.png' %}" class="mr-2" alt="quick links icon">
-                                    <span class="fs-8">Watch</span>
+                                    <span class="fs-8">My Posts</span>
                                 </a>
                             </div>
                         </div>

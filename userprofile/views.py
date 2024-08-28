@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from settings.models import userinfo
+from .models import mypost
 # Create your views here.
 def userprofile(request):
-    return render (request,'userprofile/userprofile.html')
+    user = request.user
+    return render (request,'userprofile/userprofile.html',{'user': user})

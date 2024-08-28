@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "groups",
     "friends",
     "authentication",
+    "import_export",
 ]
 
 MIDDLEWARE = [

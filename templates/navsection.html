@@ -343,15 +343,6 @@
                     </div>
                 </ul>
             </li>
-            <li class="nav-item s-nav dropdown d-mobile">
-                <a href="#" class="nav-link nav-links nav-icon drop-w-tooltip" data-toggle="dropdown" data-placement="bottom" data-title="Pages" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="{% static 'images/icons/navbar/flag.png' %}" alt="navbar icon">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right nav-drop">
-                    <a class="dropdown-item" href="sign-in.html">Sign in</a>
-                    <a class="dropdown-item" href="sign-up.html">Sign up</a>
-                </div>
-            </li>
             <li class="nav-item s-nav">
                 <a href="{% url 'userprofile' %}" class="nav-link nav-links">
                     <div class="menu-user-image">
@@ -370,10 +361,10 @@
                             <div class="handle"></div>
                         </button>
                     </a>
-                    <a class="dropdown-item" href="{% url 'settings' %}">
-                        <img src="{% static 'images/icons/navbar/gear-1.png' %}" alt="Navbar icon"> Settings</a>
-                    <a class="dropdown-item logout-btn" href="{% url 'logout' %}">
-                        <img src="{% static 'images/icons/navbar/logout.png' %}" alt="Navbar icon"> Log Out</a>
+                    <a class="dropdown-item" href="{% url 'settings' %}"><img src="{% static 'images/icons/navbar/gear-1.png' %}" alt="Navbar icon"> Settings</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'images/icons/navbar/sign-in.png' %}" alt="Navbar icon">Sign in with other account</a>
+                        <a class="dropdown-item" href="{% url 'registration' %}"><img src="{% static 'images/icons/navbar/sign-up.png' %}" alt="Navbar icon">Sign up for new account</a>
+                    <a class="dropdown-item logout-btn" href="{% url 'logout' %}"><img src="{% static 'images/icons/navbar/logout.png' %}" alt="Navbar icon"> Log Out</a>
                 </div>
             </li>
             <button type="button" class="btn nav-link" id="menu-toggle"><img src="{% static 'images/icons/theme/navs.png' %}" alt="Navbar navs"></button>
