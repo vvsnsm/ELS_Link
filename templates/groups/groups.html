@@ -62,12 +62,14 @@
                                 </a>
                                 <a href="{% url 'messages' %}" class="btn btn-quick-links mr-3">
                                     <img src="{% static 'images/icons/theme/rocket.png' %}" class="mr-2" alt="quick links icon">
-                                    <span class="fs-8">Discover</span>
+                                    <span class="fs-8">Messages</span>
                                 </a>
                                 <a href="#" class="btn btn-quick-links">
                                     <img src="{% static 'images/icons/theme/create.png' %}" class="mr-2" alt="quick links icon">
-                                    <span class="fs-8">Create</span>
+                                    <button type="button" class="btn btn-start-chat" data-toggle="modal" data-target="#newMessageModal"><i class='bx bxs-message-rounded'></i> <span class="fs-8">Create</span></button>
+                                    
                                 </a>
+                                
                             </div>
                         </div>
 
@@ -77,6 +79,32 @@
                                 <p>Get latest active from your groups.</p>
                             </div>
                         </div>
+                        <div class="groups bg-white py-3 px-4 shadow-sm">
+                            <div class="card-head d-flex justify-content-between">
+                                <h5 class="mb-4">Created Groups</h5>
+                                <a href="#" class="btn btn-link">See All</a>
+                            </div>
+                        <!-- {{result}} -->
+                        <div class="row">
+                        {% for items in result %}
+                        
+                        <div class="col-md-3 col-sm-6">
+                            <div class="card group-card shadow-sm">
+                                <img src="{{items.image.url}}" class="card-img-top group-card-image" alt="Group image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{items.title}}</h5>
+                                    <p class="card-text">{{items.description}}</p>
+                                    <a href="#" class="btn btn-quick-link join-group-btn border w-100">Created</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+                    </div>
+                    </div>
+
+                    <br>
+                    <br>
 
                         <!-- Groups -->
                         <div class="groups bg-white py-3 px-4 shadow-sm">
@@ -289,6 +317,86 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- <div class="modal fade" id="newMessageModal" tabindex="-1" role="dialog" aria-labelledby="newMessageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header new-msg-header">
+                    <h5 class="modal-title" id="newMessageModalLabel">Create New Group</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body new-msg-body">
+                    <form action="{% url 'groups' %}" method="post" class="new-msg-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Group name:</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Type name" />                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Group description:</label>
+                            <input type="text" name="description" class="form-control" id="name" placeholder="Type description" />                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Group Icon:</label>
+                            <input type="file" class="form-control" name="img" placeholder="Browse Files" />
+                        </div>
+                    </form>
+                    <div class="modal-footer new-msg-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">Create Group</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div> -->
+    <div class="modal fade" id="newMessageModal" tabindex="-1" role="dialog" aria-labelledby="newMessageModalLabel" aria-hidden="true">
+        <!-- <div class="row mt-5 justify-content-center" data-aos="fade-up"> -->
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header new-msg-header">
+                        <h5 class="modal-title" id="newMessageModalLabel">Create new group</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+              <form action="{% url 'groups' %}" method="post">
+                {% csrf_token %}
+                <!-- <div class="form-row"> -->
+                  <div class="col-md-6 form-group">
+                    
+                    <div class="modal-body new-msg-body">
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Group name:</label>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Type name" />                            </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <div class="modal-body new-msg-body">
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Group description:</label>
+                            <input type="text" class="form-control" name="description" id="email" placeholder="Type description"  />
+                        </div>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <div class="modal-body new-msg-body">
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Group Icon:</label>
+                            <input type="file" name="image" placeholder="Browse Files" />
+                        </div>
+                  </div>
+                </div>
+                <div class="modal-footer new-msg-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">Create Group</button>
+                </div>
+              </form>
+                </div>
+            </div>
+      
+          <!-- </div> -->
+          
     </div>
 
     <!-- Core -->
