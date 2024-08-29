@@ -22,11 +22,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('index.urls')),
+    path('home/',include('index.urls')),
+    path('', include('core.urls')),
     path('messages/',include('msgs.urls')),
-    path('userprofile/',include('userprofile.urls')),
-    path('settings/',include('settings.urls')),
     path('groups/',include('groups.urls')),
     path('friends/',include('friends.urls')),
-    path('authentication/',include('authentication.urls')),
 ]+ static (settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

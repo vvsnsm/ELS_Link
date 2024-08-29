@@ -27,23 +27,27 @@
             <div class="drop-content">
                 <h6 class="dropdown-header">Peoples</h6>
                 <li class="dropdown-item">
-                    <div class="col-md-2 col-sm-2 col-xs-2">
-                        <div class="notify-img">
-                            <img src="{% static 'images/users/user-6.png'%}"
-                                alt="Search result">
-                        </div>
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-10">
-                        <a href="#" class="notification-user">Susan P.
-                            Jarvis</a>
-                        <a href="#"
-                            class="btn btn-quick-link join-group-btn border text-right float-right">
-                            Add Friend
-                        </a>
-                        <p class="time">6 Mutual friends</p>
-                    </div>
+                    {% for users in username_profile_list %}
+                        <section class="search-result-item">
+                            <a class="image-link" href="/profile/{{users.user}}"><img class="image" src="{{users.profileimg.url}}">
+                            </a>
+                            <div class="search-result-item-body">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <h4 class="search-result-item-heading"><a href="/profile/{{users.user}}"><b>@{{users.user}}</b></a></h4>
+                                        <p class="info">{{users.location}}</p>
+                                        <p class="description">{{users.bio}}</p>
+                                    </div>
+                                    <!-- <div class="col-sm-3 text-align-center">
+                                        <p class="value3 mt-sm">$9, 700</p>
+                                        <p class="fs-mini text-muted">PER WEEK</p><a class="btn btn-primary btn-info btn-sm" href="#">Learn More</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </section>
+                        {% endfor %}
                 </li>
-                <li class="dropdown-item">
+                <!-- <li class="dropdown-item">
                     <div class="col-md-2 col-sm-2 col-xs-2">
                         <div class="notify-img">
                             <img src="{% static 'images/users/user-5.png'%}"
@@ -58,8 +62,8 @@
                             Add Friend
                         </a>
                     </div>
-                </li>
-                <h6 class="dropdown-header">Groups</h6>
+                </li> -->
+                <!-- <h6 class="dropdown-header">Groups</h6>
                 <li class="dropdown-item">
                     <div class="col-md-2 col-sm-2 col-xs-2">
                         <div class="notify-img">
@@ -75,8 +79,8 @@
                         </a>
                         <p class="time">2.5k Members 35+ post a week</p>
                     </div>
-                </li>
-                <li class="dropdown-item">
+                </li> -->
+                <!-- <li class="dropdown-item">
                     <div class="col-md-2 col-sm-2 col-xs-2">
                         <div class="notify-img">
                             <img src="{% static 'images/groups/group-1.png'%}"
@@ -95,7 +99,7 @@
                         </a>
                         <p class="time">10k Members 20+ post a week</p>
                     </div>
-                </li>
+                </li> -->
             </div>
             <div class="notify-drop-footer text-center">
                 <a href="#">See More</a>

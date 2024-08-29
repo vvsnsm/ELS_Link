@@ -50,7 +50,7 @@
                                     <div class="text-center">
                                         <div class="profile-img w-shadow">
                                             <div class="profile-img-overlay"></div>
-                                            <img src="{% static 'images/users/user-4.jpg'%}" alt="Avatar" class="avatar img-circle">
+                                            <img src="{{user_profile.profileimg.url}}" alt="Avatar" class="avatar img-circle">
                                             <div class="profile-img-caption">
                                                 <label for="updateProfilePic" class="upload">
                                                     <i class='bx bxs-camera'></i> Update
@@ -58,35 +58,50 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <p class="profile-fullname mt-3">@{{user.username}}</p>
+                                        <p class="profile-fullname mt-3">@{{user_profile.user.username}}</p>
                                         <p class="profile-username mb-3 text-muted">{{user.email}}</p>
                                     </div>
-                                    <!-- <div class="intro mt-4">
-                                        <div class="d-flex"> -->
-                                            <!-- ======================================FOLLOW and MESSAGE================================== -->
-                                            <!-- <button type="button" class="btn btn-follow mr-3"><i class='bx bx-plus'></i> Follow</button>
-                                            <button type="button" class="btn btn-start-chat" data-toggle="modal" data-target="#newMessageModal"><i class='bx bxs-message-rounded'></i> <span class="fs-8">Message</span></button> -->
-                                            <!-- <button type="button" class="btn btn-follow" id="moreMobile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded'></i> <span class="fs-8">More</span></button>
-                                            <div class="dropdown-menu dropdown-menu-right profile-ql-dropdown" aria-labelledby="moreMobile">
-                                                <a href="profile_post.html" class="dropdown-item">POSTS</a>
+                                    <div class="intro mt-4">
+                                        <form action="/follow" method="POST">
+                                            {% csrf_token %}
+                                            <div class="add-btn">
+                                            <span style="color: rgb(238, 141, 50); font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
+                                            
+                                            {% if user_post_length == 0 %}
+                                            <span style="color: rgb(238, 141, 50); font-size: 27px;"><b>No Post</b></span>
+                                            {% elif user_post_length == 1 %}
+                                            <span style="color: rgb(238, 141, 50); font-size: 27px;"><b>{{user_post_length}} Post</b></span>
+                                            {% else %}
+                                            <span style="color: rgb(238, 141, 50); font-size: 27px;"><b>{{user_post_length}} Posts</b></span>
+                                            {% endif %}
+                        
+                                            {% if user_followers == 0 or user_followers == 1 %}
+                                            <span style="color: rgb(238, 141, 50); font-size: 27px;"><b>{{user_followers}} follower</b></span>
+                                            {% else %}
+                                            <span style="color: rgb(238, 141, 50); font-size: 27px;"><b>{{user_followers}} followers</b></span>
+                                            {% endif %}
+                        
+                        
+                                            <span style="color: rgb(238, 141, 50); font-size: 27px;"><b>{{user_following}} following</b></span>
+                        
+                                            <input type="hidden" value="{{user.username}}" name="follower" />
+                                            <input type="hidden" value="{{user_object.username}}" name="user" />
+                        
+                                            {% if user_object.username == user.username %}
+                                            <a href="/settings" data-ripple="">Account Settings</a>
+                                            {% else %}
+                                            <a data-ripple=""><button type="submit" style="background-color: #ffc0cb; border: #ffc0cb;">{{button_text}}</button></a>
+                                            {% endif %}
+                        
                                             </div>
-                                        </div>
-                                    </div> -->
+                                        </form>
+                                    </div>
                                     <div class="intro mt-5 mv-hidden">
                                         <div class="intro-item d-flex justify-content-between align-items-center">
-                                            <h3 class="intro-about">Intro</h3>
-                                        </div>
-                                        <div class="intro-item d-flex justify-content-between align-items-center">
-                                            <p class="intro-title text-muted"><i class='bx bx-briefcase text-primary'></i> Web Developer at <a href="#">Company Name</a></p>
-                                        </div>
-                                        <div class="intro-item d-flex justify-content-between align-items-center">
-                                            <p class="intro-title text-muted"><i class='bx bx-map text-primary'></i> Lives in <a href="#">City, Country</a></p>
-                                        </div>
-                                        <div class="intro-item d-flex justify-content-between align-items-center">
-                                            <p class="intro-title text-muted"><i class='bx bx-time text-primary'></i> Last Login <a href="#">Online <span class="ml-1 online-status bg-success"></span></a></p>
-                                        </div>
-                                        <div class="intro-item d-flex justify-content-between align-items-center">
-                                            <a href="#" class="btn btn-quick-link join-group-btn border w-100">Edit Details</a>
+                                            <h3 class="intro-about">Bio</h3>
+                                            <div class="bio">
+                                                {{user_profile.bio}}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="intro mt-5 mv-hidden">

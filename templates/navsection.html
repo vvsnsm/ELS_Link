@@ -35,74 +35,61 @@
                     <div class="notify-drop-title">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-6 fs-8">Search Results <span class="badge badge-pill badge-primary ml-2">29</span></div>
+                            <h4>Results For <span class="fw-semi-bold"><b>{{username}}</b></span></h4>
                         </div>
                     </div>
                     <!-- end notify title -->
                     <!-- notify content -->
                     <div class="drop-content">
-                        <h6 class="dropdown-header">Peoples</h6>
-                        <li class="dropdown-item">
-                            <div class="col-md-2 col-sm-2 col-xs-2">
-                                <div class="notify-img">
-                                    <img src="{% static 'images/users/user-6.png' %}" alt="Search result">
+                        <form action="search" method="POST">
+                            {% csrf_token %}
+                            <header style="margin-top: -23px;">
+                                <div class="header_inner">
+                                    <div class="left-side">
+                                        <!-- Logo -->
+                                        <div id="logo" class=" uk-hidden@s">
+                                            <a href="/">
+                                                <!-- <b><h1 style="text-transform: uppercase;">Social Book</h1></b> -->
+                                            </a>
+                                        </div>
+                                        <input type="text" name="username" placeholder="Search for username..">&nbsp; &nbsp;
+                                        <button type="submit"><i class="fa fa-search fa-1x"></i></button>
+                                            
+                        
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-10">
-                                <a href="#" class="notification-user">Susan P. Jarvis</a>
-                                <a href="#" class="btn btn-quick-link join-group-btn border text-right float-right">
-                                    Add Friend
+                            </header>
+                        </form>
+                        <div class="col-md-9 col-md-pull-3">
+                            <!-- <p class="search-results-count">About 94 700 000 (0.39 sec.) results</p> -->
+                            
+                            {% for users in username_profile_list %}
+                            <section class="search-result-item">
+                                <a class="image-link" href="/profile/{{users.user}}"><img class="image" src="{{users.profileimg.url}}">
                                 </a>
-                                <p class="time">6 Mutual friends</p>
-                            </div>
-                        </li>
-                        <li class="dropdown-item">
-                            <div class="col-md-2 col-sm-2 col-xs-2">
-                                <div class="notify-img">
-                                    <img src="{% static 'images/users/user-5.png' %}" alt="Search result">
+                                <div class="search-result-item-body">
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            <h4 class="search-result-item-heading"><a href="/profile/{{users.user}}"><b>@{{users.user}}</b></a></h4>
+                                            <p class="info">{{users.location}}</p>
+                                            <p class="description">{{users.bio}}</p>
+                                        </div>
+                                        <!-- <div class="col-sm-3 text-align-center">
+                                            <p class="value3 mt-sm">$9, 700</p>
+                                            <p class="fs-mini text-muted">PER WEEK</p><a class="btn btn-primary btn-info btn-sm" href="#">Learn More</a>
+                                        </div> -->
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-10">
-                                <a href="#" class="notification-user">Ruth D. Greene</a>
-                                <a href="#" class="btn btn-quick-link join-group-btn border text-right float-right">
-                                    Add Friend
-                                </a>
-                            </div>
-                        </li>
-                        <h6 class="dropdown-header">Groups</h6>
-                        <li class="dropdown-item">
-                            <div class="col-md-2 col-sm-2 col-xs-2">
-                                <div class="notify-img">
-                                    <img src="{% static 'images/groups/group-2.jpg' %}" alt="Search result">
-                                </div>
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-10">
-                                <a href="#" class="notification-user">Tourism</a>
-                                <a href="#" class="btn btn-quick-link join-group-btn border text-right float-right">
-                                    Join
-                                </a>
-                                <p class="time">2.5k Members 35+ post a week</p>
-                            </div>
-                        </li>
-                        <li class="dropdown-item">
-                            <div class="col-md-2 col-sm-2 col-xs-2">
-                                <div class="notify-img">
-                                    <img src="{% static 'images/groups/group-1.png' %}" alt="Search result">
-                                </div>
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-10">
-                                <a href="#" class="notification-user">Argon Social Network <img src="{% static 'images/theme/verify.png' %}" width="10px" class="verify" alt="Group verified"></a>
-                                <a href="#" class="btn btn-quick-link join-group-btn border text-right float-right">
-                                    Join
-                                </a>
-                                <p class="time">10k Members 20+ post a week</p>
-                            </div>
-                        </li>
+                            </section>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="notify-drop-footer text-center">
                         <a href="#">See More</a>
                     </div>
                 </ul>
             </form>
+            
             <li class="nav-item s-nav dropdown message-drop-li">
                 <a href="#" class="nav-link nav-links message-drop drop-w-tooltip" data-toggle="dropdown" data-placement="bottom" data-title="Messages" role="button" aria-haspopup="true" aria-expanded="false">
                     <img src="{% static 'images/icons/navbar/message.png' %}" class="message-dropdown" alt="navbar icon"> <span class="badge badge-pill badge-primary">1</span>
@@ -185,6 +172,7 @@
                                 </p>
                             </div>
                         </li>
+                        
                         <li>
                             <div class="col-md-2 col-sm-2 col-xs-2">
                                 <div class="notify-img">
@@ -344,9 +332,9 @@
                 </ul>
             </li>
             <li class="nav-item s-nav">
-                <a href="{% url 'userprofile' %}" class="nav-link nav-links">
+                <a href="/profile/{{user_profile.user}}" class="nav-link nav-links">
                     <div class="menu-user-image">
-                        <img src="{% static 'images/users/user-4.jpg' %}" class="menu-user-img ml-1" alt="Menu Image">
+                        <img src="{{user_profile.profileimg.url}}" class="menu-user-img ml-1" alt="Menu Image">
                     </div>
                 </a>
             </li>
@@ -361,10 +349,12 @@
                             <div class="handle"></div>
                         </button>
                     </a>
-                    <a class="dropdown-item" href="{% url 'settings' %}"><img src="{% static 'images/icons/navbar/gear-1.png' %}" alt="Navbar icon"> Settings</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'images/icons/navbar/sign-in.png' %}" alt="Navbar icon">Sign in with other account</a>
-                        <a class="dropdown-item" href="{% url 'registration' %}"><img src="{% static 'images/icons/navbar/sign-up.png' %}" alt="Navbar icon">Sign up for new account</a>
-                    <a class="dropdown-item logout-btn" href="{% url 'logout' %}"><img src="{% static 'images/icons/navbar/logout.png' %}" alt="Navbar icon"> Log Out</a>
+                    <a class="dropdown-item" href="{% url 'settings' %}">
+                        <img src="{% static 'images/icons/navbar/gear-1.png' %}" alt="Navbar icon"> Settings</a>
+                    <a class="dropdown-item" href="/signin"><img src="{% static 'images/icons/navbar/sign-in.png' %}" alt="Navbar icon">Sign in with other account</a>
+                    <a class="dropdown-item" href="/signup"><img src="{% static 'images/icons/navbar/sign-up.png' %}" alt="Navbar icon">Sign up for new account</a>
+                    <a class="dropdown-item logout-btn" href="{% url 'logout' %}">
+                        <img src="{% static 'images/icons/navbar/logout.png' %}" alt="Navbar icon"> Log Out</a>
                 </div>
             </li>
             <button type="button" class="btn nav-link" id="menu-toggle"><img src="{% static 'images/icons/theme/navs.png' %}" alt="Navbar navs"></button>

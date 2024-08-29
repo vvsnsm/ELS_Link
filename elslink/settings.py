@@ -39,12 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "msgs",
     "index",
-    "userprofile",
-    "settings",
     "groups",
     "friends",
-    "authentication",
     "import_export",
+    "core",
 ]
 
 MIDDLEWARE = [
