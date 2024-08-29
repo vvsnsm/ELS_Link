@@ -25,10 +25,10 @@ def authlogout(request):
 
 def authregistration(request):
     if request.method == 'POST':
+        first_name=request.POST.get('first_name')
+        last_name=request.POST.get('last_name')
         username = request.POST['name']
         email = request.POST['email']
-        # phno = request.POST['phno']
-        # dob = request.POST['dob']
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
         if password == confirm_password:
@@ -36,12 +36,10 @@ def authregistration(request):
                 messages.error(request, 'Username Already Exist')
             elif User.objects.filter(email=email).exists():
                 messages.error(request, 'Email Already Exist')
-            # elif User.objects.filter(phno=phno).exists():
-            #     messages.error(request, 'Account already exit with this Ph No.')
             else:
-                user = User.objects.create_user(username=username,password=password,email=email)
+                user = User.objects.create_user(username=username,password=password,email=email,first_name=first_name,last_name=last_name)
                 user.save()
-                return redirect('userprofile')
+                return redirect('login')
 
         else:
             messages.error(request, 'Password and Confirm Password Not Matched')
